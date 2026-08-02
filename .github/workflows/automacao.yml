@@ -1,21 +1,19 @@
-name: Disparar Automacao Pumble
+name: Registrar Atividade Pumble
 
 on:
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Só roda quando você comandar manualmente com os dados reais
 
 jobs:
   enviar:
     runs-on: ubuntu-latest
     steps:
-      - name: Faz requisicao para o Apps Script
+      - name: Enviar Dados Reais para o Apps Script
         run: |
           curl -X POST "https://script.google.com/macros/s/AKfycbwzUFk6zcQxC8XRL1EefWTgh8mCzxbDZC9fvEPbFQOuEZJAfw-XAYrX_s70d_VEDnNxBg/exec" \
           -H "Content-Type: application/json" \
           -d '{
-            "codigoAcao": "ACAO-101",
+            "codigoAcao": "CHECK-REAL-01",
             "nomeQuemFez": "Daniele",
             "numeroSei": "SEI-080002/021268/2026",
-            "atividadeRealizada": "Análise de Processo SEI"
+            "atividadeRealizada": "Nome exato da atividade conferida"
           }'
